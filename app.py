@@ -360,4 +360,4 @@ demo = gr.Interface(
 	)
 
 demo.queue(concurrency_count=1)
-demo.launch(share=True)
+demo.launch()
