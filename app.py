@@ -145,7 +145,7 @@ def load_model_from_config(config, ckpt, verbose=False):
 
 # device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 device = torch.device("cuda")
-vqgan_config = OmegaConf.load("./configs/autoencoder/autoencoder_kl_64x64x4_resi.yaml")
+vqgan_config = OmegaConf.load("StableSR/configs/autoencoder/autoencoder_kl_64x64x4_resi.yaml")
 vq_model = load_model_from_config(vqgan_config, './vqgan_cfw_00011.ckpt')
 vq_model = vq_model.to(device)
 
@@ -158,11 +158,11 @@ def inference(image, upscale, dec_w, seed, model_type, ddpm_steps, colorfix_type
 	seed_everything(seed)
 
 	if model_type == '512':
-		config = OmegaConf.load("./configs/stableSRNew/v2-finetune_text_T_512.yaml")
+		config = OmegaConf.load("StableSR/configs/stableSRNew/v2-finetune_text_T_512.yaml")
 		model = load_model_from_config(config, "./stablesr_000117.ckpt")
 		min_size = 512
 	else:
-		config = OmegaConf.load("./configs/stableSRNew/v2-finetune_text_T_768v.yaml")
+		config = OmegaConf.load("StableSR/configs/stableSRNew/v2-finetune_text_T_768v.yaml")
 		model = load_model_from_config(config, "./stablesr_768v_000139.ckpt")
 		min_size = 768
 
